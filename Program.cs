@@ -117,13 +117,27 @@ builder.Services.AddCors(opt =>
     opt.AddPolicy("DevClient",
         b =>
         {
-            b
-                .WithOrigins("https://localhost:44406")
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials();
+            b.WithOrigins("https://localhost:44406")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
         });
-
+    opt.AddPolicy("Domain",
+        b =>
+        {
+            b.WithOrigins("https://fitlance.me")
+            .AllowCredentials()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+    opt.AddPolicy("Azure",
+        b =>
+        {
+            b.WithOrigins("https://fitlance.azurewebsites.net")
+            .AllowCredentials()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
 });
 
 var app = builder.Build();
@@ -146,16 +160,14 @@ if (app.Environment.IsDevelopment())
     app.UseCors("DevClient");
 }
 
+app.UseCors("Domain");
+app.UseCors("Azure");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
-//app.MapControllerRoute(
-//    name: "default",
-//    pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html");
 
