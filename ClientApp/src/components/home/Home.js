@@ -26,7 +26,7 @@ const Home = () => {
                             className="w-full h-auto object-cover object-center rounded-lg shadow-md mb-4 md:mb-0"
                         />
                     </div>
-                    <div className="w-full md:w-1/2 px-4 text-2xl">
+                    <div className="w-full md:w-1/2 px-4 md:text-2xl">
                         <p>
                             At Fitlance, we believe that a healthy lifestyle is the key to a
                             happier, more fulfilling life. That's why we've created a platform
@@ -39,7 +39,7 @@ const Home = () => {
                     </div>
                 </section>
                 <section className="md:flex md:justify-center md:items-start md:space-x-6 mt-6">
-                    <div className="order-first md:order-first w-full md:w-1/2 px-4 text-2xl">
+                    <div className="order-first md:order-first w-full md:w-1/2 px-4 md:text-2xl">
                         <p>
                             Personal trainers can make all the difference in achieving your
                             fitness goals. Fitlance connects you with a diverse range of
@@ -66,7 +66,7 @@ const Home = () => {
                             className="w-full h-auto object-cover object-center rounded-lg shadow-md mb-4 md:mb-0"
                         />
                     </div>
-                    <div className="order-last md:order-first w-full md:w-1/2 px-4 text-2xl">
+                    <div className="order-last md:order-first w-full md:w-1/2 px-4 md:text-2xl">
                         <p>
                             For those who thrive in group settings, Fitlance provides access to a wide variety of workout
                             classes held by top-rated instructors in your area. Experience the camaraderie and motivation
@@ -84,7 +84,7 @@ const Home = () => {
                             className="w-full h-auto object-cover object-center rounded-lg shadow-md mb-4 md:mb-0"
                         />
                     </div>
-                    <div className="order-first md:order-first w-full md:w-1/2 px-4 text-2xl">
+                    <div className="order-first md:order-first w-full md:w-1/2 px-4 md:text-2xl">
                         <p>
                             Join the Fitlance community today and unlock endless possibilities for your fitness journey.
                             Together, we'll help you become the best version of yourself.

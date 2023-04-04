@@ -4,7 +4,7 @@ import { Instagram, Twitter, FacebookOne, Tiktok } from "@icon-park/react";
 const Footer = () => {
     return (
         <footer
-            className="bg-slate-100 fixed bottom-0 h-24 w-[100vw]"
+            className="bg-white fixed bottom-0 h-24 w-[100vw]"
         >
             <div className="py-[2rem] flex justify-evenly">
                 <span>
