@@ -32,7 +32,7 @@ const Appointments = () => {
                     </h1>
                 </div>
                 <div className="md:flex md:justify-around md:items-start md:space-x-2 mt-6">
-                    <div className="h-[32rem]">
+                    <div className="h-[32rem] md:w-2/5">
                         <Calendar
                             startAccessor="start"
                             endAccessor="end"

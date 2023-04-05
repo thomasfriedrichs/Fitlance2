@@ -34,8 +34,8 @@ const CustomToolbar = (toolbar) => {
                 <button
                     key={name}
                     onClick={() => toolbar.onView(name)}
-                    className={`text-gray-600 font-semibold text-lg focus:outline-none hover:text-blue-600 
-                              ${view === name ? 'underline' : ''}`}
+                    className={`text-gray-600 font-semibold text-lg focus:outline-none hover:text-blue-600 ${view === name ? 'underline' : ''
+                        }`}
                 >
                     {viewDisplayNames[name]}
                 </button>
@@ -43,31 +43,34 @@ const CustomToolbar = (toolbar) => {
         }
     };
 
-
     return (
-        <div className="flex justify-between items-center p-2 bg-gray-200 border-b border-gray-300">
-            <div className="flex space-x-4">
-                <button
-                    onClick={goToBack}
-                    className="text-gray-600 font-semibold text-lg focus:outline-none hover:text-blue-600"
-                >
-                    &#8249;
-                </button>
-                <button
-                    onClick={goToCurrent}
-                    className="text-gray-600 font-semibold text-lg focus:outline-none hover:text-blue-600"
-                >
-                    Today
-                </button>
-                <button
-                    onClick={goToNext}
-                    className="text-gray-600 font-semibold text-lg focus:outline-none hover:text-blue-600"
-                >
-                    &#8250;
-                </button>
+        <div className="flex flex-wrap justify-between items-center p-2 bg-gray-200 border-b border-gray-300">
+            <div className="flex flex-wrap justify-around items-center w-full md:w-1/2">
+                <div className="flex space-x-4 mb-2 md:mb-0">
+                    <button
+                        onClick={goToBack}
+                        className="text-gray-600 font-semibold text-lg focus:outline-none hover:text-blue-600"
+                    >
+                        &#8249;
+                    </button>
+                    <button
+                        onClick={goToCurrent}
+                        className="text-gray-600 font-semibold text-lg focus:outline-none hover:text-blue-600"
+                    >
+                        Today
+                    </button>
+                    <button
+                        onClick={goToNext}
+                        className="text-gray-600 font-semibold text-lg focus:outline-none hover:text-blue-600"
+                    >
+                        &#8250;
+                    </button>
+                </div>
+                <span className="font-semibold text-lg mb-2 md:mb-0">{label()}</span>
             </div>
-            <span className="font-semibold text-lg">{label()}</span>
-            <div className="flex space-x-4">{viewNamesGroup()}</div>
+            <div className="flex space-x-4">
+                {viewNamesGroup()}
+            </div>
         </div>
     );
 };
