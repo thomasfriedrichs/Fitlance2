@@ -7,6 +7,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 import { getUserAppointments, getTrainerAppointments } from "../../services/AppointmentService";
 import SingleAppointment from "./SingleAppointment";
+import CustomToolbar from "./CustomToolbar"
 import "./calendar-styles.css";
 
 const Appointments = () => {
@@ -35,7 +36,10 @@ const Appointments = () => {
                         <Calendar
                             startAccessor="start"
                             endAccessor="end"
-                            localizer={localizer}/>
+                            localizer={localizer}
+                            components={{
+                                toolbar: (props) => <CustomToolbar {...props} localizer={localizer} />,
+                            }}/>
                     </div>
                     <div className="md:w-1/2">
                         {data.map((appointment, i) => {
