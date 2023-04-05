@@ -1,6 +1,9 @@
 ﻿import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Cookies from "js-cookie";
+import { Calendar, momentLocalizer } from 'react-big-calendar'
+import moment from 'moment'
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 import { getUserAppointments, getTrainerAppointments } from "../../services/AppointmentService";
 import SingleAppointment from "./SingleAppointment";
@@ -8,6 +11,11 @@ import SingleAppointment from "./SingleAppointment";
 const Appointments = () => {
     const role = Cookies.get("Role");
     const { data, isLoading, isError, error } = useQuery(["getAppointments"], role === "User" ? getUserAppointments : getTrainerAppointments);
+    const localizer = momentLocalizer(moment)
+
+    const events = () => {
+
+    }
 
     if (isLoading) {
         return <div className="my-72">Loading...</div>
@@ -18,22 +26,30 @@ const Appointments = () => {
     };
 
     return (
-        <div className="flex justify-center">
+        <section className="flex justify-center">
             <div className="mt-8 md:mt-12 mb-20 w-full">
                 <div className="border-b-2 flex justify-start">
                     <h1 className="text-2xl">
                         Appointments
                     </h1>
                 </div>
-                <div>
-                    {data.map((appointment, i) => {
-                        return (
-                            <SingleAppointment key={i} appointment={appointment} />
-                        );
-                    })}
+                <div className="md:flex md:justify-around md:items-start md:space-x-2 mt-6">
+                    <div className="h-96">
+                        <Calendar
+                            startAccessor="start"
+                            endAccessor="end"
+                            localizer={localizer}/>
+                    </div>
+                    <div className="md:w-1/2">
+                        {data.map((appointment, i) => {
+                            return (
+                                <SingleAppointment key={i} appointment={appointment} />
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
