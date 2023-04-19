@@ -89,9 +89,6 @@ public class AppointmentsController : ControllerBase
                 return NotFound("Appointment Not Found");
             }
 
-            DbAppointment.AppointmentDate = appointment.AppointmentDate;
-            DbAppointment.Address = appointment.Address;
-
             _context.Entry(DbAppointment).State = EntityState.Modified;
 
             await _context.SaveChangesAsync();
