@@ -1,12 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿namespace Fitlance.Dtos;
 
-namespace Fitlance.Entities;
-
-[Table("Address")]
 public class Address
 {
-    public int Id { get; set; }
-
     public string? StreetAddress { get; set; }
 
     public string? City { get; set; }
