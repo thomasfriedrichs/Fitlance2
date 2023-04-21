@@ -8,10 +8,17 @@ const useLazyLoadItems = (items, loadCount, containerRef) => {
     // State to store the items that are currently displayed
     const [displayedItems, setDisplayedItems] = useState([]);
 
+    //Sort items by date
+    const sortItems = (items) => {
+        return [...items].sort((a, b) => {
+            return new Date(a.startTimeUtc) - new Date(b.startTimeUtc);
+        });
+    };
+
     // Effect to initialize the displayed items when the items array changes
     useEffect(() => {
         if (items) {
-            setDisplayedItems(items.slice(0, loadCount));
+            setDisplayedItems(sortItems(items.slice(0, loadCount)));
         }
     }, [items, loadCount]);
 

@@ -14,10 +14,9 @@ import "./calendar-styles.css";
 const Appointments = () => {
     const role = Cookies.get("Role");
     const appointmentsContainerRef = useRef();
-
     const { data, isLoading, isError, error } = useQuery(["getAppointments"], role === "User" ? getUserAppointments : getTrainerAppointments);
-    const displayedAppointments = useLazyLoadItems(data, 5, appointmentsContainerRef);
 
+    const displayedAppointments = useLazyLoadItems(data, 5, appointmentsContainerRef);
     const localizer = momentLocalizer(moment);
 
 
