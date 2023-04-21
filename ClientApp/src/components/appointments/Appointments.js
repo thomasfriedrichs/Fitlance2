@@ -19,6 +19,14 @@ const Appointments = () => {
     const displayedAppointments = useLazyLoadItems(data, 5, appointmentsContainerRef);
     const localizer = momentLocalizer(moment);
 
+    const calendarEvents = () => {
+        return data.map((appointment) => ({
+            start: new Date(appointment.startTimeUtc), 
+            end: new Date(appointment.endTimeUtc), 
+        }));
+    };
+
+
 
     if (isLoading) {
         return <div className="my-72">Loading...</div>
@@ -39,6 +47,7 @@ const Appointments = () => {
                 <div className="md:flex md:justify-around md:items-start md:space-x-2 mt-6">
                     <div className="h-[32rem] md:w-2/5">
                         <Calendar
+                            events={calendarEvents()}
                             startAccessor="start"
                             endAccessor="end"
                             localizer={localizer}
