@@ -16,6 +16,9 @@ const Home = () => {
                 <p className="text-xl sm:text-3xl mb-6">
                     Discover a World of Fitness Opportunities with Fitlance
                 </p>
+                <p className="text-xl sm:text-2xl mb-6">
+                    In order to tour the app, you can press login in the upper right of the screen, then login as guest user
+                </p>
             </header>
             <main className="w-full">
                 <section className="md:flex md:justify-center md:items-start md:space-x-6">
