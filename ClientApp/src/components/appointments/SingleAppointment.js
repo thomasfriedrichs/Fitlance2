@@ -5,7 +5,14 @@ import AppointmentForm from "./AppointmentForm";
 
 const SingleAppointment = (appointment) => {
     const [formView, setFormView] = useState(false);
-    const { streetAddress, city, state, postalCode, country, startTimeUtc, trainerId, id } = appointment.appointment;
+    const {
+        streetAddress,
+        city,
+        state,
+        postalCode,
+        country,
+        startTimeUtc,
+    } = appointment.appointment;
     const startTimeUtcDate = new Date(startTimeUtc);
     const startTimePst = new Date(startTimeUtcDate.getTime() - 7 * 60 * 60 * 1000).toLocaleString('en-US');
 
@@ -38,16 +45,13 @@ const SingleAppointment = (appointment) => {
                     </div>
                 </div>
             </section>
-            {/*{formView ?
+            {formView ?
                 <AppointmentForm
                     toggleView={onEdit}
                     query={putAppointment}
                     reqType={"put"}
-                    trainerId={trainerId}
-                    address={streetAddress}
-                    appointmentDate={startTimeUtc}
-                    id={id} />
-                : null}*/}
+                    appointment={appointment.appointment}/>
+                : null}
             <button
                 className="p-2"
                 onClick={onEdit}>

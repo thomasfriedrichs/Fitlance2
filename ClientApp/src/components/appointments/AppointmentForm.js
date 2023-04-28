@@ -1,14 +1,30 @@
-﻿import React from "react";
-import { Form, Formik } from "formik";
+﻿import React, { useState } from "react";
+import { Form, Formik, ErrorMessage, Field } from "formik";
 import Cookies from "js-cookie";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
+import DateTimePicker from "react-datetime-picker";
 
 import { AppointmentSchema } from "../../validators/Validate";
-import { useQueryClient, useMutation } from "@tanstack/react-query";
+import CustomTimeRangePicker from "./CustomTimeRangePicker";
+import CustomDatePicker from "./CustomDatePicker";
 
 const AppointmentForm = props => {
     const userId = Cookies.get("Id");
-    const currentDate = new Date().toLocaleDateString();
-    const { toggleView, query, reqType, trainerId, address, appointmentDate, id } = props;
+    const currentDate = new Date();
+    const [startTime, setStartTime] = useState(new Date());
+    const [endTime, setEndTime] = useState(new Date());
+    const { toggleView, query, reqType, } = props;
+    const {
+        city,
+        country,
+        endTimeUtc,
+        postalCode,
+        state,
+        trainerId,
+        streetAddress,
+        startTimeUtc,
+        id
+    } = props.appointment || {};
     const queryClient = useQueryClient();
 
     const mutation = useMutation({
@@ -24,12 +40,19 @@ const AppointmentForm = props => {
         }
     });
 
+    console.log(props)
+
     const initialValues = {
         clientId: userId,
         trainerId: trainerId,
-        address: address === null ? "" : address,
-        createTime: currentDate,
-        appointmentDate: appointmentDate === null ? "" : appointmentDate,
+        streetAddress: streetAddress === null ? "" : streetAddress,
+        city: city === null ? "" : city,
+        country: country === null ? "" : country,
+        postalCode: postalCode === null ? "" : postalCode,
+        state: state === null ? "" : state,
+        updateTimeUtc: currentDate,
+        startTimeUtc: startTimeUtc === null ? "" : startTimeUtc,
+        endTimeUtc: endTimeUtc === null ? "" : endTimeUtc,
         isActive: true
     };
 
@@ -56,30 +79,43 @@ const AppointmentForm = props => {
                         className="flex flex-col justify-center">
                         <input
                             type="text"
-                            name="address"
-                            id="address"
-                            placeholder="Address/Location"
-                            value={values.address}
+                            name="streetAddress"
+                            id="streetAddress"
+                            placeholder="Street Address"
+                            value={values.streetAddress}
                             onChange={handleChange}
                             className={`border w-[95%] rounded-lg text-center p-1 m-2
-              ${errors.address && touched.address ? "border-red-500" : "border-lime-500"}
-            `} />
-                        {errors.address && touched.address && (
-                            <span className="text-red-500">{errors.address}</span>
+                                ${errors.streetAddress && touched.streetAddress ? "border-red-500" : "border-lime-500"}
+                            `} />
+                        {errors.streetAddress && touched.streetAddress && (
+                            <span className="text-red-500">{errors.streetAddress}</span>
                         )}
-                        <input
-                            type="text"
-                            name="appointmentDate"
-                            id="appointmentDate"
-                            placeholder="MM/DD/YYYY"
-                            value={values.appointmentDate}
-                            onChange={handleChange}
-                            className={`border w-[95%] rounded-lg text-center p-1 m-2
-              ${errors.appointmentDate && touched.appointmentDate ? "border-red-500" : "border-lime-500"}
-            `} />
-                        {errors.appointmentDate && touched.appointmentDate && (
-                            <span className="text-red-500 m-auto">{errors.appointmentDate}</span>
-                        )}
+                        <div className="mb-4">
+                            <label htmlFor="date" className="block text-sm font-medium text-gray-700">
+                                Date:
+                            </label>
+                            <Field
+                                name="date"
+                                component={CustomDatePicker}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            />
+                            <ErrorMessage name="date" component="div" className="text-sm text-red-600" />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="timeRange" className="block text-sm font-medium text-gray-700">
+                                Time Range:
+                            </label>
+                            <Field
+                                name="timeRange"
+                                component={CustomTimeRangePicker}
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            />
+                            <ErrorMessage
+                                name="timeRange"
+                                component="div"
+                                className="text-sm text-red-600"
+                            />
+                        </div>
                         <div className="flex flex-row justify-center">
                             <button
                                 disabled={!(dirty && isValid)}
