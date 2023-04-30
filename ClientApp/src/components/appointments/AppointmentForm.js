@@ -2,11 +2,15 @@
 import { Form, Formik, ErrorMessage, Field } from "formik";
 import Cookies from "js-cookie";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
-import DateTimePicker from "react-datetime-picker";
+import DatePicker from "react-date-picker";
+import TimeRangePicker from "@wojtekmaj/react-timerange-picker";
+import 'react-date-picker/dist/DatePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import '@wojtekmaj/react-timerange-picker/dist/TimeRangePicker.css';
+import 'react-clock/dist/Clock.css';
 
 import { AppointmentSchema } from "../../validators/Validate";
-import CustomTimeRangePicker from "./CustomTimeRangePicker";
-import CustomDatePicker from "./CustomDatePicker";
+import "./index.css";
 
 const AppointmentForm = props => {
     const userId = Cookies.get("Id");
@@ -42,6 +46,23 @@ const AppointmentForm = props => {
 
     console.log(props)
 
+    const handleChangeDate = (date) => {
+        const start = new Date(date);
+        start.setHours(startTime.getHours());
+        start.setMinutes(startTime.getMinutes());
+        setStartTime(start);
+
+        const end = new Date(date);
+        end.setHours(endTime.getHours());
+        end.setMinutes(endTime.getMinutes());
+        setEndTime(end);
+    };
+
+    const handleChangeTimeRange = ([start, end]) => {
+        setStartTime(start);
+        setEndTime(end);
+    };
+
     const initialValues = {
         clientId: userId,
         trainerId: trainerId,
@@ -51,8 +72,8 @@ const AppointmentForm = props => {
         postalCode: postalCode === null ? "" : postalCode,
         state: state === null ? "" : state,
         updateTimeUtc: currentDate,
-        startTimeUtc: startTimeUtc === null ? "" : startTimeUtc,
-        endTimeUtc: endTimeUtc === null ? "" : endTimeUtc,
+        startTimeUtc: startTimeUtc === null ? startTime : startTimeUtc,
+        endTimeUtc: endTimeUtc === null ? endTime : endTimeUtc,
         isActive: true
     };
 
@@ -94,9 +115,10 @@ const AppointmentForm = props => {
                             <label htmlFor="date" className="block text-sm font-medium text-gray-700">
                                 Date:
                             </label>
-                            <Field
+                            <DatePicker
+                                value={startTime}
+                                onChange={handleChangeDate}
                                 name="date"
-                                component={CustomDatePicker}
                                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             />
                             <ErrorMessage name="date" component="div" className="text-sm text-red-600" />
@@ -105,9 +127,10 @@ const AppointmentForm = props => {
                             <label htmlFor="timeRange" className="block text-sm font-medium text-gray-700">
                                 Time Range:
                             </label>
-                            <Field
+                            <TimeRangePicker
+                                value={[startTime, endTime]}
+                                onChange={handleChangeTimeRange}
                                 name="timeRange"
-                                component={CustomTimeRangePicker}
                                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             />
                             <ErrorMessage
