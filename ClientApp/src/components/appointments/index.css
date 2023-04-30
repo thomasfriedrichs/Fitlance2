@@ -20,6 +20,9 @@
 .react-date-picker__wrapper {
     display: flex;
     justify-content: space-around;
+    border-width: 1px;
+    border-radius: 0.5rem;
+    width: 95%;
 }
 
 .react-date-picker__inputGroup {
@@ -33,6 +36,12 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+}
+
+.react-timerange-picker__wrapper {
+    border-width: 1px;
+    border-radius: 0.5rem;
+    width: 95%;
 }
 
 .react-timerange-picker__inputGroup {

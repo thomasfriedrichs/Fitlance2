@@ -105,13 +105,13 @@ const AppointmentForm = props => {
                             placeholder="Street Address"
                             value={values.streetAddress}
                             onChange={handleChange}
-                            className={`border w-[95%] rounded-lg text-center p-1 m-2
+                            className={`border w-[95%] rounded-lg text-center m-2 shadow-sm
                                 ${errors.streetAddress && touched.streetAddress ? "border-red-500" : "border-lime-500"}
                             `} />
                         {errors.streetAddress && touched.streetAddress && (
                             <span className="text-red-500">{errors.streetAddress}</span>
                         )}
-                        <div className="mb-4">
+                        <div className="mb-4 m-2">
                             <label htmlFor="date" className="block text-sm font-medium text-gray-700">
                                 Date:
                             </label>
@@ -123,7 +123,7 @@ const AppointmentForm = props => {
                             />
                             <ErrorMessage name="date" component="div" className="text-sm text-red-600" />
                         </div>
-                        <div className="mb-4">
+                        <div className="mb-4 m-2">
                             <label htmlFor="timeRange" className="block text-sm font-medium text-gray-700">
                                 Time Range:
                             </label>
