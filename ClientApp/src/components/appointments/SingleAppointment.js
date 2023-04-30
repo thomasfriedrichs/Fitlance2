@@ -40,7 +40,7 @@ const SingleAppointment = (appointment) => {
                         </address>
                     </div>
                     <div>
-                        <h2 className="text-lg font-bold mt-4 mb-2">Start Time (PST)</h2>
+                        <h2 className="text-lg font-bold mb-2">Start Time (PST)</h2>
                         <p>{startTimePst}</p>
                     </div>
                 </div>

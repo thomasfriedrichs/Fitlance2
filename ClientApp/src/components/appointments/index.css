@@ -20,7 +20,7 @@
 .react-date-picker__wrapper {
     display: flex;
     justify-content: space-around;
-    border-width: 1px;
+    border: 1px solid #d1d5db;
     border-radius: 0.5rem;
     width: 95%;
 }
@@ -39,14 +39,17 @@
 }
 
 .react-timerange-picker__wrapper {
+    border: 1px solid #d1d5db;
     border-width: 1px;
     border-radius: 0.5rem;
     width: 95%;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
 .react-timerange-picker__inputGroup {
-    width: 100%;
+    width: 90%;
     margin-bottom: 0.5rem;
+    padding: 0px 1.5rem;
 }
 
 .react-timerange-picker__input {
@@ -62,6 +65,11 @@
         box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
         outline: none;
     }
+
+.react-timerange-picker__clock {
+    display: none;
+}
+
 
 @media (min-width: 640px) {
     .react-timerange-picker {

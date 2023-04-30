@@ -34,16 +34,15 @@ export const AppointmentSchema = Yup.object().shape({
         .min(2, 'City must be at least 2 characters')
         .max(50, 'City must not exceed 50 characters'),
     country: Yup.string()
-        .required('Country is required')
-        .min(2, 'Country must be at least 2 characters')
-        .max(50, 'Country must not exceed 50 characters'),
+        .oneOf(["USA"], "Only 'USA' is allowed as the input for country")
+        .required("Country is required"),
     postalCode: Yup.string()
         .required('Postal code is required')
         .matches(/^\d{5}(?:[-\s]\d{4})?$/, 'Postal code is not valid'),
     state: Yup.string()
         .required('State is required')
         .min(2, 'State must be at least 2 characters')
-        .max(50, 'State must not exceed 50 characters'),
+        .max(2, 'State must not exceed 2 characters'),
     streetAddress: Yup.string()
         .required('Street address is required')
         .min(5, 'Street address must be at least 5 characters')
