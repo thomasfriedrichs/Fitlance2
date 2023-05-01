@@ -46,7 +46,7 @@ const AppointmentForm = props => {
 
             try {
                 const { lat, lng } = await getLatLngFromAddress(addressString);
-
+                console.log(lat,lng)
                 const updatedValues = {
                     ...values,
                     latitude: lat,
