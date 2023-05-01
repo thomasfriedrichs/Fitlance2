@@ -19,6 +19,7 @@ const AppointmentForm = props => {
     const currentDate = new Date();
     const [startTime, setStartTime] = useState(new Date());
     const [endTime, setEndTime] = useState(new Date());
+    const [geocodeError, setGeocodeError] = useState(null);
     const { toggleView, query, reqType, } = props;
     const {
         city,
@@ -54,6 +55,7 @@ const AppointmentForm = props => {
                 await reqType === "put" ? query(id, updatedValues) : query(updatedValues);
             } catch (error) {
                 console.error("Error fetching coordinates:", error);
+                setGeocodeError("Please enter a valid address.");
             }
         },
         onSuccess: () => {
@@ -241,6 +243,11 @@ const AppointmentForm = props => {
                                 className="text-sm text-red-600"
                             />
                         </div>
+                        {geocodeError && (
+                            <div className="text-red-600 text-center">
+                                {geocodeError}
+                            </div>
+                        )}
                         <div className="flex flex-row justify-center">
                             <button
                                 disabled={!(dirty && isValid)}
