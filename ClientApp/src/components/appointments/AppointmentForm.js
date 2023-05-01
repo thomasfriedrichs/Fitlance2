@@ -10,6 +10,7 @@ import '@wojtekmaj/react-timerange-picker/dist/TimeRangePicker.css';
 import 'react-clock/dist/Clock.css';
 
 import { AppointmentSchema } from "../../validators/Validate";
+import { getLatLngFromAddress } from "./helpers/geocode";
 import StatePicker from "./StatePicker";
 import "./index.css";
 
@@ -34,7 +35,26 @@ const AppointmentForm = props => {
 
     const mutation = useMutation({
         mutationFn: async values => {
-            await reqType === "put" ? query(id, values) : query(values);
+            const addressString = [
+                values.streetAddress,
+                values.city,
+                values.state,
+                values.postalCode,
+                values.country,
+            ].join(", ");
+
+            try {
+                const { lat, lng } = await getLatLngFromAddress(addressString);
+
+                const updatedValues = {
+                    ...values,
+                    latitude: lat,
+                    longitude: lng,
+                };
+                await reqType === "put" ? query(id, updatedValues) : query(updatedValues);
+            } catch (error) {
+                console.error("Error fetching coordinates:", error);
+            }
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["getAppointments"] });
@@ -213,7 +233,7 @@ const AppointmentForm = props => {
                                 value={[startTime, endTime]}
                                 onChange={handleChangeTimeRange}
                                 name="timeRange"
-                                className="mt-1 block w-full rounded-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                className="mt-1 block w-full rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             />
                             <ErrorMessage
                                 name="timeRange"
