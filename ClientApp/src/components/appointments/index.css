@@ -1,78 +1,22 @@
-﻿/* React-Date-Picker Styles */
-.react-datepicker__input-container {
-    width: 100%;
-}
-
-.react-datepicker__input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.25rem;
-    font-size: 1rem;
-}
-
-    .react-datepicker__input:focus {
-        border-color: #2563eb;
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
-        outline: none;
-    }
-
-.react-date-picker__wrapper {
-    display: flex;
-    justify-content: space-around;
-    border: none;
-    border-radius: 0.5rem;
-    width: 95%;
-}
-
-.react-date-picker__inputGroup {
-    flex-basis: 60%;
-    display: flex;
-    justify-content: space-around;
-}
-
-/* React-TimeRange-Picker Styles */
-.react-timerange-picker {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
-
-.react-timerange-picker__wrapper {
-    border: none;
-    border-width: 1px;
-    border-radius: 0.5rem;
-}
-
-.react-timerange-picker__inputGroup {
-    margin-bottom: 0.5rem;
-}
-
-.react-timerange-picker__input {
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 1rem;
-}
-
-    .react-timerange-picker__input:focus {
-        border-color: #2563eb;
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
-        outline: none;
-    }
-
-.react-timerange-picker__clock {
+﻿
+.react-datetimerange-picker__clock {
     display: none;
 }
 
+/* DateTimeRangePickerStyles.css */
+/* DateTimeRangePickerStyles.css */
 
-@media (min-width: 640px) {
-    .react-timerange-picker {
+.react-datetimerange-picker__wrapper {
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+
+@media screen and (min-width: 640px) {
+
+    .react-datetimerange-picker__wrapper {
+        display: flex;
         flex-direction: row;
     }
 
-    .react-timerange-picker__inputGroup {
-        width: 45%;
-
-    }
 }
