@@ -52,8 +52,7 @@ const AppointmentForm = props => {
                 await reqType === "put" ? query(id, updatedValues) : query(updatedValues);
             } catch (error) {
                 console.error("Error fetching coordinates:", error);
-                console.log("Address string:", addressString); // Add this line to log the address string
-
+                console.log("Address string:", addressString);
                 setGeocodeError("Please enter a valid address.");
             }
         },
