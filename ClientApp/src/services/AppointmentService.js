@@ -15,7 +15,8 @@ export const postAppointment = async (reqObj) => {
 export const putAppointment = async (id, reqObj) => {
     const token = Cookies.get("X-Access-Token");
     try {
-        axios.put(`${BASE_URL}/api/Appointments/${id}`, reqObj, { headers: { authorization: `bearer ${token}` } });
+        const response = axios.put(`${BASE_URL}/api/Appointments/${id}`, reqObj, { headers: { authorization: `bearer ${token}` } });
+        return response;
     } catch (err) {
         console.log(err);
     };

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+﻿import React, { useState } from "react";
 import { Form, Formik, ErrorMessage, Field } from "formik";
 import Cookies from "js-cookie";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
@@ -43,22 +43,28 @@ const AppointmentForm = props => {
 
             try {
                 const { lat, lng } = await getLatLngFromAddress(addressString);
-                console.log(lat,lng)
                 const updatedValues = {
                     ...values,
                     latitude: lat,
                     longitude: lng,
                 };
-                await reqType === "put" ? query(id, updatedValues) : query(updatedValues);
+                const response = await reqType === "put" ? query(id, updatedValues) : query(updatedValues);
+                console.log("response", response)
+                return response;
             } catch (error) {
                 console.error("Error fetching coordinates:", error);
-                console.log("Address string:", addressString);
                 setGeocodeError("Please enter a valid address.");
+                throw error;
             }
         },
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ["getAppointments"] });
-            return toggleView();
+        onSuccess: (response) => {
+            console.log(response)
+            if (response.status === 200 || response.status === 201) {
+                queryClient.invalidateQueries({ queryKey: ["getAppointments"] });
+                toggleView();
+            } else {
+                console.log("Non-success response status:", response);
+            }
         },
         onError: (error) => {
             console.log("query error", error);
