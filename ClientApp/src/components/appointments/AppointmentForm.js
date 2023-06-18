@@ -25,8 +25,8 @@ const AppointmentForm = props => {
     } = props.appointment || {};
     const userId = Cookies.get("Id");
     const currentDate = new Date();
-    const [startTime, setStartTime] = useState(new Date());
-    const [endTime, setEndTime] = useState(new Date(currentDate.getTime() + 1 + 60 * 60 * 1000));
+    const [startTime, setStartTime] = useState(new Date().toLocaleString());
+    const [endTime, setEndTime] = useState(new Date(currentDate.getTime() + 1 + 60 * 60 * 1000).toLocaleString());
     const [geocodeError, setGeocodeError] = useState(null);
     const { toggleView, query, reqType, } = props;
     const queryClient = useQueryClient();
@@ -75,8 +75,8 @@ const AppointmentForm = props => {
         if (Array.isArray(dateTimeRange) && dateTimeRange.length === 2) {
             const [newStartTime, newEndTime] = dateTimeRange;
             if (newStartTime instanceof Date && newEndTime instanceof Date) {
-                formik.setFieldValue("startTimeUtc", newStartTime);
-                formik.setFieldValue("endTimeUtc", newEndTime);
+                formik.setFieldValue("startTimeUtc", newStartTime.toISOString());
+                formik.setFieldValue("endTimeUtc", newEndTime.toISOString());
             }
         }
     };
@@ -91,9 +91,9 @@ const AppointmentForm = props => {
         country: country === null ? "" : country,
         postalCode: postalCode === null ? "" : postalCode,
         state: state === null ? "" : state,
-        updateTimeUtc: currentDate,
-        startTimeUtc: startTimeUtc === null ? startTime : startTimeUtc,
-        endTimeUtc: endTimeUtc === null ? endTime : endTimeUtc,
+        updateTimeUtc: currentDate.toISOString(),
+        startTimeUtc: startTimeUtc === null ? startTime : new Date(startTimeUtc).toISOString(),
+        endTimeUtc: endTimeUtc === null ? endTime : new Date(endTimeUtc).toISOString(),
         isActive: true
     };
 

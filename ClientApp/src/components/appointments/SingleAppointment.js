@@ -14,7 +14,7 @@ const SingleAppointment = (appointment) => {
         startTimeUtc,
     } = appointment.appointment;
     const startTimeUtcDate = new Date(startTimeUtc);
-    const startTimePst = new Date(startTimeUtcDate.getTime() - 7 * 60 * 60 * 1000).toLocaleString('en-US');
+    const startTimeLocal = startTimeUtcDate.toLocaleString();
 
     const onEdit = () => {
         setFormView(!formView);
@@ -41,7 +41,7 @@ const SingleAppointment = (appointment) => {
                     </div>
                     <div>
                         <h2 className="text-lg font-bold mb-2">Start Time (PST)</h2>
-                        <p>{startTimePst}</p>
+                        <p>{startTimeLocal}</p>
                     </div>
                 </div>
             </section>
