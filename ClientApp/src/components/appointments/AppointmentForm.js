@@ -25,8 +25,8 @@ const AppointmentForm = props => {
     } = props.appointment || {};
     const userId = Cookies.get("Id");
     const currentDate = new Date();
-    const [startTime, setStartTime] = useState(new Date().toLocaleString());
-    const [endTime, setEndTime] = useState(new Date(currentDate.getTime() + 1 + 60 * 60 * 1000).toLocaleString());
+    const [startTime, setStartTime] = useState(new Date());
+    const [endTime, setEndTime] = useState(new Date(currentDate.getTime() + 1 + 60 * 60 * 1000));
     const [geocodeError, setGeocodeError] = useState(null);
     const { toggleView, query, reqType, } = props;
     const queryClient = useQueryClient();
@@ -81,8 +81,6 @@ const AppointmentForm = props => {
         }
     };
 
-
-
     const initialValues = {
         clientId: userId,
         trainerId: trainerId,
@@ -92,8 +90,8 @@ const AppointmentForm = props => {
         postalCode: postalCode === null ? "" : postalCode,
         state: state === null ? "" : state,
         updateTimeUtc: currentDate.toISOString(),
-        startTimeUtc: startTimeUtc === null ? startTime : new Date(startTimeUtc).toISOString(),
-        endTimeUtc: endTimeUtc === null ? endTime : new Date(endTimeUtc).toISOString(),
+        startTimeUtc: startTimeUtc === null ? startTime : new Date(startTimeUtc + 'Z'),
+        endTimeUtc: endTimeUtc === null ? endTime : new Date(endTimeUtc + 'Z'),
         isActive: true
     };
 

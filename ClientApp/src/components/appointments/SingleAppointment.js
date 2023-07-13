@@ -13,8 +13,10 @@ const SingleAppointment = (appointment) => {
         country,
         startTimeUtc,
     } = appointment.appointment;
-    const startTimeUtcDate = new Date(startTimeUtc);
+    const startTimeUtcDate = new Date(startTimeUtc + 'Z');
     const startTimeLocal = startTimeUtcDate.toLocaleString();
+    const timezone = startTimeUtcDate.toLocaleTimeString(undefined, { timeZoneName: 'short' }).split(' ')[2];
+
 
     const onEdit = () => {
         setFormView(!formView);
@@ -40,7 +42,7 @@ const SingleAppointment = (appointment) => {
                         </address>
                     </div>
                     <div>
-                        <h2 className="text-lg font-bold mb-2">Start Time (PST)</h2>
+                        <h2 className="text-lg font-bold mb-2">Start Time ({timezone})</h2>
                         <p>{startTimeLocal}</p>
                     </div>
                 </div>
