@@ -18,7 +18,7 @@ const SingleTrainer = ({ trainer, imageIndex }) => {
             <div className="flex flex-row">
                 <div className="p-2 h-24 w-24">
                     <img
-                        className="object-cover h-24 w-24"
+                        className="object-cover h-24 w-32 rounded-full"
                         src={images[imageIndex].image}
                         alt={images[imageIndex].alt} />
                 </div>
