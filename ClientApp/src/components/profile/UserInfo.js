@@ -1,5 +1,4 @@
 ﻿import React from "react";
-
 import images from "../../assets/profileImages";
 
 const UserInfo = ({ data }) => {
@@ -7,58 +6,60 @@ const UserInfo = ({ data }) => {
     const imageIndex = Math.floor(Math.random() * 4);
 
     return (
-        <section>
+        <section className="bg-white p-4 rounded-lg">
             <div className="flex flex-col md:flex-row mt-4">
-                <div className="basis-1/4 h-full">
+                <aside className="basis-1/4 h-full">
                     <div className="p-2 h-48 w-48">
                         <img
-                            className="object-cover h-48 w-48"
+                            className="object-cover h-48 w-48 rounded-full"
                             src={images[imageIndex].image}
-                            alt={images[imageIndex].alt} />
+                            alt={images[imageIndex].alt}
+                            aria-describedby="profile-image-description" />
                     </div>
-                </div>
-                <div className="basis-3/4 h-full text-left">
-                    <div className="py-6 md:px-12 text-2xl">
+                </aside>
+                <div className="basis-3/4 h-full text-left ml-0 md:ml-6" role="main">
+                    <div className="py-2 md:py-4 text-xl md:text-2xl font-semibold">
                         {firstName === null || lastName === null ?
-                            <p className="text-red-400">Please update Name</p>
+                            <p className="text-red-400" aria-live="polite">Please update Name</p>
                             :
-                            <div className="flex flex-row">
+                            <div className="flex flex-row" tabIndex="0">
                                 <p className="p-2">{firstName}</p>
                                 <p className="p-2">{lastName}</p>
                             </div>
                         }
                     </div>
                     <div className="flex flex-row">
-                        <div className="py-6 md:px-12 text-2xl">
+                        <div className="py-2 md:py-4 text-xl md:text-2xl font-semibold">
                             {city === null ?
-                                <p className="text-red-400">Please update City</p>
+                                <p className="text-red-400" aria-live="polite">Please update City</p>
                                 :
-                                <div>
+                                <div tabIndex="0">
                                     <p className="p-2">{city}</p>
                                 </div>
                             }
                         </div>
-                        <div className="py-6 text-2xl">
+                        <div className="py-2 md:py-4 text-xl md:text-2xl font-semibold">
                             {zipCode === null ?
-                                <p className="text-red-400">Please update Zipcode</p>
+                                <p className="text-red-400" aria-live="polite">Please update Zipcode</p>
                                 :
-                                <div>
+                                <div tabIndex="0">
                                     <p className="p-2">{zipCode}</p>
                                 </div>
                             }
                         </div>
                     </div>
-                    <div className="py-6 md:px-12 text-2xl">
+                    <div className="py-2 md:py-4 text-xl md:text-2xl font-semibold">
                         {bio === null ?
-                            <p className="text-red-400">Please update Bio</p>
+                            <p className="text-red-400" aria-live="polite">Please update Bio</p>
                             :
-                            <div>
+                            <div tabIndex="0">
                                 <p className="p-2">{bio}</p>
                             </div>
                         }
                     </div>
                 </div>
             </div>
+            <div id="profile-image-description" className="sr-only">Profile image of {firstName} {lastName}</div>
         </section>
     );
 };

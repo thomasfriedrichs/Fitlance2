@@ -89,8 +89,16 @@ public class AppointmentsController : ControllerBase
                 return NotFound("Appointment Not Found");
             }
 
-            DbAppointment.AppointmentDate = appointment.AppointmentDate;
-            DbAppointment.Address = appointment.Address;
+            DbAppointment.City = appointment.City;
+            DbAppointment.Country = appointment.Country;
+            DbAppointment.State = appointment.State;
+            DbAppointment.StreetAddress = appointment.StreetAddress;
+            DbAppointment.PostalCode = appointment.PostalCode; 
+            DbAppointment.Latitude = appointment.Latitude;
+            DbAppointment.Longitude = appointment.Longitude;
+            DbAppointment.StartTimeUtc = appointment.StartTimeUtc;
+            DbAppointment.EndTimeUtc = appointment.EndTimeUtc;
+            DbAppointment.UpdateTimeUtc = DateTime.UtcNow;
 
             _context.Entry(DbAppointment).State = EntityState.Modified;
 

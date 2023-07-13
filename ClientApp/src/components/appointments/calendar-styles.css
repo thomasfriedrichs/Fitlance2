@@ -1,0 +1,128 @@
+﻿
+.rbc-calendar {
+    background-color: white;
+    font-family: "Roboto", sans-serif;
+    z-index: 0;
+}
+
+.rbc-btn-group {
+    display: inline-flex;
+}
+
+.rbc-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+}
+
+    .rbc-toolbar button {
+        color: #5f6368;
+        background: none;
+        border: none;
+        font-weight: 500;
+        font-size: 14px;
+        outline: none;
+        cursor: pointer;
+    }
+
+        .rbc-toolbar button:hover {
+            color: #1a73e8;
+        }
+
+        .rbc-toolbar button.rbc-active {
+            color: #1a73e8;
+        }
+
+.rbc-toolbar-label {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.rbc-month-view .rbc-header,
+.rbc-time-header {
+    background-color: white;
+    color: #5f6368;
+    font-weight: 500;
+    padding: 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.rbc-header + .rbc-header {
+    border-left: none;
+}
+
+.rbc-today button.rbc-button-link {
+    background-color: rgba(154, 194, 249, 0.2);
+}
+
+.rbc-selected {
+    background-color: #1a73e8;
+    color: white;
+}
+
+.rbc-event {
+    background-color: #1a73e8;
+    color: white;
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.rbc-event-content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rbc-row-segment {
+    padding: 2px 4px;
+}
+
+.rbc-row-content {
+    z-index: 0;
+}
+
+.rbc-month-view .rbc-date-cell {
+    padding: 8px;
+}
+
+.rbc-month-view .rbc-day-bg + .rbc-day-bg {
+    border-left: none;
+}
+
+.rbc-date-cell{
+    display: flex;
+    justify-content: center;
+}
+
+    .rbc-date-cell.rbc-now {
+        font-weight: bold;
+        background-color: white;
+    }
+
+        .rbc-date-cell.rbc-now button {
+            background-color: #dc3545;
+            border-radius: 50%;
+            width: 2rem;
+        }
+
+            .rbc-date-cell.rbc-now .rbc-button-link{
+                color: white;
+            }
+
+
+.rbc-day-bg {
+    background-color: white;
+}
+
+.mb-2 {
+    margin-bottom: 0 !important;
+}
+
+
+@media only screen and (max-width: 700){
+
+}

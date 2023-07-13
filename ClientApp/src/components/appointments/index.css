@@ -1,0 +1,22 @@
+﻿
+.react-datetimerange-picker__clock {
+    display: none;
+}
+
+/* DateTimeRangePickerStyles.css */
+/* DateTimeRangePickerStyles.css */
+
+.react-datetimerange-picker__wrapper {
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+
+@media screen and (min-width: 640px) {
+
+    .react-datetimerange-picker__wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+
+}

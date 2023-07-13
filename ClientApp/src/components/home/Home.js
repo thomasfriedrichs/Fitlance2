@@ -10,11 +10,14 @@ const Home = () => {
     });
 
     return (
-        <div className="min-h-screen bg-gray-100 py-20">
+        <div className="min-h-screen bg-gray-100 py-20 pb-32">
             <header className="w-full text-center py-8">
                 <h1 className="text-3xl sm:text-6xl font-bold mb-4">Welcome</h1>
                 <p className="text-xl sm:text-3xl mb-6">
                     Discover a World of Fitness Opportunities with Fitlance
+                </p>
+                <p className="text-xl sm:text-2xl mb-6">
+                    In order to tour the app, you can press login in the upper right of the screen, then login as guest user
                 </p>
             </header>
             <main className="w-full">
@@ -26,7 +29,7 @@ const Home = () => {
                             className="w-full h-auto object-cover object-center rounded-lg shadow-md mb-4 md:mb-0"
                         />
                     </div>
-                    <div className="w-full md:w-1/2 px-4 md:text-2xl">
+                    <div className="w-full md:w-1/4 px-4 md:text-2xl">
                         <p>
                             At Fitlance, we believe that a healthy lifestyle is the key to a
                             happier, more fulfilling life. That's why we've created a platform
@@ -39,7 +42,7 @@ const Home = () => {
                     </div>
                 </section>
                 <section className="md:flex md:justify-center md:items-start md:space-x-6 mt-6">
-                    <div className="order-first md:order-first w-full md:w-1/2 px-4 md:text-2xl">
+                    <div className="order-first md:order-first w-full md:w-1/4 px-4 md:text-2xl">
                         <p>
                             Personal trainers can make all the difference in achieving your
                             fitness goals. Fitlance connects you with a diverse range of
@@ -66,7 +69,7 @@ const Home = () => {
                             className="w-full h-auto object-cover object-center rounded-lg shadow-md mb-4 md:mb-0"
                         />
                     </div>
-                    <div className="order-last md:order-first w-full md:w-1/2 px-4 md:text-2xl">
+                    <div className="order-last md:order-first w-full md:w-1/4 px-4 md:text-2xl">
                         <p>
                             For those who thrive in group settings, Fitlance provides access to a wide variety of workout
                             classes held by top-rated instructors in your area. Experience the camaraderie and motivation
@@ -84,7 +87,7 @@ const Home = () => {
                             className="w-full h-auto object-cover object-center rounded-lg shadow-md mb-4 md:mb-0"
                         />
                     </div>
-                    <div className="order-first md:order-first w-full md:w-1/2 px-4 md:text-2xl">
+                    <div className="order-first md:order-first w-full md:w-1/4 px-4 md:text-2xl">
                         <p>
                             Join the Fitlance community today and unlock endless possibilities for your fitness journey.
                             Together, we'll help you become the best version of yourself.

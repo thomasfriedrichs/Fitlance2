@@ -29,6 +29,26 @@ export const ProfileSchema = Yup.object().shape({
 });
 
 export const AppointmentSchema = Yup.object().shape({
-    address: Yup.string().required("Location required"),
-    appointmentDate: Yup.string().matches(/(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/, "Must format date MM/DD/YYYY")
+    city: Yup.string()
+        .required('City is required')
+        .min(2, 'City must be at least 2 characters')
+        .max(50, 'City must not exceed 50 characters'),
+    country: Yup.string()
+        .oneOf(["USA"], "Only 'USA' is allowed as the input for country")
+        .required("Country is required"),
+    postalCode: Yup.string()
+        .required('Postal code is required')
+        .matches(/^\d{5}(?:[-\s]\d{4})?$/, 'Postal code is not valid'),
+    state: Yup.string()
+        .required('State is required')
+        .min(2, 'State must be at least 2 characters')
+        .max(2, 'State must not exceed 2 characters'),
+    streetAddress: Yup.string()
+        .required('Street address is required')
+        .min(5, 'Street address must be at least 5 characters')
+        .max(100, 'Street address must not exceed 100 characters'),
+    startTimeUtc: Yup.date().required('Start time is required'),
+    endTimeUtc: Yup.date()
+        .required('End time is required')
+        .min(Yup.ref('startTimeUtc'), 'End time must be later than start time'),
 });
