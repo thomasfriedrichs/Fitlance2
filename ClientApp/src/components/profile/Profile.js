@@ -25,7 +25,7 @@ const Profile = () => {
     return (
         <div className="flex justify-center">
             <div className="mt-8 md:mt-12 mb-20 p-8 w-full md:w-[80vw] h-full">
-                <div className="border-b-2 flex justify-between">
+                <div className="flex justify-between">
                     <h1 className="text-4xl">Profile</h1>
                     {editView ?
                         null

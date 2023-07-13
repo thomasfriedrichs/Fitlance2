@@ -3,7 +3,7 @@ import images from "../../assets/profileImages";
 
 const UserInfo = ({ data }) => {
     const { firstName, lastName, zipCode, city, bio } = data;
-    const imageIndex = Math.floor(Math.random() * 4);
+    const imageIndex = Math.floor(Math.random() * 61);
 
     return (
         <section className="bg-white p-4 rounded-lg">

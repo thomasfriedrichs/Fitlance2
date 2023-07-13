@@ -23,9 +23,9 @@ const SingleAppointment = (appointment) => {
     };
 
     return (
-        <div className="border shadow-sm rounded-sm m-4">
+        <div className="border-b shadow-sm rounded-sm hover:bg-slate-100">
             <section
-                className="bg-white p-2 w-full mx-auto"
+                className="p-2 w-full mx-auto hover:bg-slate-100"
                 role="region"
                 aria-label="Appointment Information"
             >

@@ -39,7 +39,7 @@ const Appointments = () => {
     return (
         <section className="flex justify-center">
             <div className="mt-8 md:mt-12 mb-20 w-full">
-                <div className="border-b-2 flex justify-start">
+                <div className=" flex justify-start">
                     <h1 className="text-2xl">
                         Appointments
                     </h1>

@@ -90,8 +90,8 @@ const AppointmentForm = props => {
         postalCode: postalCode === null ? "" : postalCode,
         state: state === null ? "" : state,
         updateTimeUtc: currentDate.toISOString(),
-        startTimeUtc: startTimeUtc === null ? startTime : new Date(startTimeUtc + 'Z'),
-        endTimeUtc: endTimeUtc === null ? endTime : new Date(endTimeUtc + 'Z'),
+        startTimeUtc: startTimeUtc ? new Date(startTimeUtc + 'Z') : startTime,
+        endTimeUtc: endTimeUtc ? new Date(endTimeUtc + 'Z') : endTime,
         isActive: true
     };
 

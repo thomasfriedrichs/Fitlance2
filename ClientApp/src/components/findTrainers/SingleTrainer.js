@@ -13,12 +13,12 @@ const SingleTrainer = ({ trainer, imageIndex }) => {
     };
 
     return (
-        <div className={`relative border rounded-sm md:m-4 flex flex-col md:flex-row justify-between
-      ${appointmentFormView ? "h-80 md:h-64" : "h-48 md:h-32"}`}>
+        <div className={`relative border-b rounded-sm flex flex-col md:flex-row justify-between hover:bg-slate-100
+            ${appointmentFormView ? "h-80 md:h-80" : "h-48 md:h-32"}`}>
             <div className="flex flex-row">
-                <div className="p-2 h-24 w-24">
+                <div className="p-2">
                     <img
-                        className="object-cover h-24 w-32 rounded-full"
+                        className="object-cover h-24 w-24 rounded-full"
                         src={images[imageIndex].image}
                         alt={images[imageIndex].alt} />
                 </div>
